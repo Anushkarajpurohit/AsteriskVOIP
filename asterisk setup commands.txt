@@ -1,0 +1,43 @@
+Asterisk is used in VOIP.This file is a guide on how to install Asterisk on Ubuntu Server. 
+>>apt-get update
+
+[configure files : /etc/asterisk/voicemail.conf, /etc/asterisk/extensions.conf, /etc/asterisk/sip.conf]
+[make sure to have  backups of each files ]
+
+Install Asterisk in “/usr/src”:
+>>cd /usr/src
+>>wget http://downloads.asterisk.org/pub/telephony/certified-asterisk/asterisk-certified-13.21-current.tar.gz .
+
+Extract the folder.
+>>tar -zxvf asterisk-certified-13.21-current.tar.gz
+>>cd asterisk-certified-13.21-current/
+
+You need to install some dependencies needed to start asterisk:-
+>>apt-get install build-essential 
+apt-get install libxml2-dev
+apt-get install libncurses5-dev libreadline-dev libreadline6-dev
+apt-get install libssl-dev
+apt-get install uuid-dev
+apt-get install libjansson-dev
+apt-get install libsqlite3-dev
+apt-get install pkg-config
+
+Run the configure script file
+>>./configure 
+(if faced any errors, install the dependencies mentioned in the error)
+
+Start asterisk up:
+>>/etc/init.d/asterisk start
+
+To connect to Asterisk Cli:
+>>sudo asterisk -rvvvvv
+
+To show all call endpoints:
+>>pjsip show endpoints
+
+To restart the asterisk:
+>>core reload now
+
+To exit the Asterisk CLI:
+>>exit
+
